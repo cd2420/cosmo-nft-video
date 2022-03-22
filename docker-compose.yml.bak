@@ -10,7 +10,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       TZ: 'Asia/Seoul'
     ports:
-      - "3305:3306"
+      - "3306:3306"
     command:
       - "mysqld"
       - "--character-set-server=utf8mb4"
