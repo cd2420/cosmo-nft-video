@@ -16,7 +16,7 @@ example:
 spring:
   thymeleaf:
     cache: false
-    prefix: file:video/src/main/resources/templates/
+    prefix: file:nft/src/main/resources/templates/
   datasource:
     url: jdbc:mysql://localhost:3306/video_nft?useSSL=false&serverTimezone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver

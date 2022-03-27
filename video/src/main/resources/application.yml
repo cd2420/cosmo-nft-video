@@ -1,17 +1,22 @@
-spring:
-  thymeleaf:
-    cache: false
-    prefix: file:video/src/main/resources/templates/
-  datasource:
-    url: jdbc:mysql://localhost:3306/video_nft?useSSL=false&serverTimezone=Asia/Seoul
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: ''
-  jpa:
-    open-in-view: false
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-    hibernate:
-      ddl-auto: update
+#spring:
+#  thymeleaf:
+#    cache: false
+#    prefix: file:video/src/main/resources/templates/
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/video_nft?useSSL=false&serverTimezone=Asia/Seoul
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: ''
+#  jpa:
+#    open-in-view: false
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    hibernate:
+#      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
