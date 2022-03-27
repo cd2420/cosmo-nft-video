@@ -1,0 +1,30 @@
+#spring:
+#  datasource:
+#    hikari:
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://localhost:3306/video_nft?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+#      username: root
+#      password: ''
+#  thymeleaf:
+#    cache: false
+#  web:
+#    resources:
+#      cache:
+#        period: 0
+spring:
+  thymeleaf:
+    cache: false
+    prefix: file:video/src/main/resources/templates/
+  datasource:
+    url: jdbc:mysql://localhost:3306/video_nft?useSSL=false&serverTimezone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: ''
+  jpa:
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
