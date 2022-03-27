@@ -1,4 +1,4 @@
-package com.cosmo.video.video.service;
+package com.cosmo.video.service;
 
 public interface VideoService {
 

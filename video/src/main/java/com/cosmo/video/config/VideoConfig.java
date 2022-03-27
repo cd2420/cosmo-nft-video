@@ -1,4 +1,4 @@
-package com.cosmo.video.video.config;
+package com.cosmo.video.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

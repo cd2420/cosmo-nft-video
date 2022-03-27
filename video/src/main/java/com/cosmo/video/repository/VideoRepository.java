@@ -1,6 +1,6 @@
-package com.cosmo.video.video.repository;
+package com.cosmo.video.repository;
 
-import com.cosmo.video.video.entity.Video;
+import com.cosmo.video.entity.Video;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

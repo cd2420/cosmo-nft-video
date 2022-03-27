@@ -1,6 +1,6 @@
-package com.cosmo.video.video.service.impl;
+package com.cosmo.video.service.impl;
 
-import com.cosmo.video.video.service.VideoService;
+import com.cosmo.video.service.VideoService;
 import org.springframework.stereotype.Service;
 
 @Service

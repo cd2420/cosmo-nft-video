@@ -1,6 +1,6 @@
-package com.cosmo.video.video.controller;
+package com.cosmo.video.controller;
 
-import com.cosmo.video.video.service.VideoService;
+import com.cosmo.video.service.VideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
