@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: nftservice
+  profiles:
+    active:
+      default
+  cloud:
+    config:
+      uri: http://localhost:8888

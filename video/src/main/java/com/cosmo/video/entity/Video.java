@@ -1,4 +1,4 @@
-package com.cosmo.video.video.entity;
+package com.cosmo.video.entity;
 
 import lombok.*;
 

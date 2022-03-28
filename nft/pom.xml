@@ -2,69 +2,52 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.8</version>
-        <relativePath/>
-    </parent>
-    	<groupId>com.cosmo</groupId>
         <artifactId>video-nft</artifactId>
+        <groupId>com.cosmo</groupId>
         <version>0.0.1-SNAPSHOT</version>
-    	
-    <properties>
-		<java.version>1.8</java.version>
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-	</properties>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>nft</artifactId>
 
     <dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <dependency>
-	        <groupId>org.springframework.boot</groupId>
-	        <artifactId>spring-boot-devtools</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>com.google.code.gson</groupId>
-		    <artifactId>gson</artifactId>
-		</dependency>
-		<dependency>
-            <groupId>com.github.ipfs</groupId>
-            <artifactId>java-ipfs-http-client</artifactId>
-            <version>1.3.3</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>2.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
-    
-   	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-	
-	<repositories> 
-		<repository> 
-			<id>jitpack.io</id> 
-			<url>https://jitpack.io</url> 
-		</repository> 
-	</repositories> 
+
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <start-class>com.cosmo.nft.NftApplication</start-class>
+        <java.version>1.8</java.version>
+        <docker.image.name>cosmo/tmx-nftsvr</docker.image.name>
+        <docker.image.tag>nft-server</docker.image.tag>
+    </properties>
 
 </project>
