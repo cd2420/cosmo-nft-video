@@ -15,7 +15,7 @@ public class NftRestTemplateClient {
 
     public NftDto getNft(Long nftId) {
         ResponseEntity<NftDto> restExchange = restTemplate.exchange(
-                "http://nftservice/v1/nft/{nftId}"
+                "http://nftservice/v1/api/nft/{nftId}"
                 , HttpMethod.GET
                 , null, NftDto.class, nftId
         );

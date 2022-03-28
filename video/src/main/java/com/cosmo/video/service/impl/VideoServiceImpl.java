@@ -9,6 +9,7 @@ import com.cosmo.video.repository.VideoRepository;
 import com.cosmo.video.service.VideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -43,13 +44,17 @@ public class VideoServiceImpl implements VideoService {
         return nftDto;
     }
 
+
     @Override
     public String helloWorld() {
         return "hello World!!";
     }
 
     @Override
+    @Transactional(readOnly = true)
     public NftDto getNft(Long nftId) {
-        return retrieveOrgInfo(nftId, "discovery");
+        NftDto nftDto = retrieveOrgInfo(nftId, "discovery");
+
+        return nftDto;
     }
 }

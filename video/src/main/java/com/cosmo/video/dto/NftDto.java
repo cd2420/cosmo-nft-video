@@ -6,5 +6,6 @@ import lombok.Data;
 public class NftDto {
 
     private Long id;
+    private String name;
 
 }

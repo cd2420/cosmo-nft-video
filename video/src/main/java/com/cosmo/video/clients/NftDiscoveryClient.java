@@ -22,7 +22,7 @@ public class NftDiscoveryClient {
         List<ServiceInstance> instances = discoveryClient.getInstances("nftservice");
 
         if (instances.size() == 0)  return null;
-        String serviceUri = String.format("%s/v1/nft/%s",instances.get(0).getUri().toString(), nftId);
+        String serviceUri = String.format("%s/v1/api/nft/%s",instances.get(0).getUri().toString(), nftId);
         ResponseEntity<NftDto> restExchange = restTemplate.exchange(
                 serviceUri
                 , HttpMethod.GET

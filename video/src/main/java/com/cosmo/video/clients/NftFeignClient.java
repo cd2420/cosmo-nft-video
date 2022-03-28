@@ -12,7 +12,7 @@ import javax.ws.rs.Path;
 public interface NftFeignClient {
     @RequestMapping(
             method = RequestMethod.GET
-            , value = "/v1/nft/{nftId}"
+            , value = "/v1/api/nft/{nftId}"
             , consumes = "application/json"
     )
     NftDto getNft(@PathVariable("nftId") Long nftId);
