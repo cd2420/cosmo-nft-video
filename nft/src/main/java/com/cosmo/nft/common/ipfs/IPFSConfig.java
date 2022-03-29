@@ -1,0 +1,19 @@
+package com.cosmo.nft.common.ipfs;
+
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+
+import io.ipfs.api.IPFS;
+
+@Configuration
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+public class IPFSConfig {
+
+    IPFS ipfs;
+
+    public IPFSConfig() {
+        ipfs = new IPFS("/ip4/127.0.0.1/tcp/5001");
+    }
+
+}
