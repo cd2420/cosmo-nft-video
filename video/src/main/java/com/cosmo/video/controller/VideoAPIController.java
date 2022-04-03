@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("v1/api/video")
 @RequiredArgsConstructor
@@ -18,6 +20,8 @@ public class VideoAPIController {
     private static final Logger logger = LoggerFactory.getLogger(VideoAPIController.class);
 
     private final VideoService videoService;
+
+    private final HttpServletRequest request;
 
     @GetMapping("/hello")
     public ResponseEntity<String> helloWorld() {

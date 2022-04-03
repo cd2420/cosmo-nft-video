@@ -20,8 +20,14 @@ spring:
           uri: https://github.com/cd2420/cosmo-video-nft-config-svr
           username: cd2420
           password: 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
-          searchPaths: videoservice, nftservice
+          searchPaths: videoservice, nftservice, specialroutesservice, zuulservice
 
+#Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.thoughtmechanix: DEBUG
 
 
 ####
