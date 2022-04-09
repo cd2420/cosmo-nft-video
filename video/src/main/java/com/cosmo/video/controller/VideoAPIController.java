@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("v1/api/video")
+@RequestMapping("/v1/api/video")
 @RequiredArgsConstructor
 public class VideoAPIController {
     private static final Logger logger = LoggerFactory.getLogger(VideoAPIController.class);

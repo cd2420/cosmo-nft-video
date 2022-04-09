@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+#      default-filters:
+#        - name: GlobalFilter
+#          args:
+#            baseMessage: Spring Cloud Gateway Global Filter
+#            preLogger: true
+#            postLogger: true
+      routes:
+        - id: video-service
+          uri: lb://VIDEOSERVICE
+          predicates: # 조건 부분
+            - Path=/v1/api/video/**
+#          filters:
+#            - CustomFilter
+        - id: nft-service
+          uri: lb://NFTSERVICE
+          predicates:
+            - Path=/v1/api/nft/**
+#          filters:
+#            - name: CustomFilter
+#            - name: LoggingFilter
+#              args:
+#                baseMessage: Hi, there.
+#                preLogger: true
+#                postLogger: true
+  main:
+    web-application-type: reactive
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

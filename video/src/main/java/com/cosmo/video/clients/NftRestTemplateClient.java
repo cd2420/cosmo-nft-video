@@ -21,7 +21,7 @@ public class NftRestTemplateClient {
     public NftDto getNft(Long nftId) {
         logger.debug(">>> In Video Service.getNft: {}. Thread Id: {}", UserContextHolder.getContext().getCorrelationId(), Thread.currentThread().getId());
         ResponseEntity<NftDto> restExchange = restTemplate.exchange(
-                "http://nftservice/v1/api/nft/{nftId}"
+                "http://localhost:8000/v1/api/nft/{nftId}"
                 , HttpMethod.GET
                 , null, NftDto.class, nftId
         );
