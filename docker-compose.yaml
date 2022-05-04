@@ -1,8 +1,6 @@
-version: '3'
-
+version: '3.8'
 services:
-  mysql:
-    container_name: video_nft
+  db:
     image: mysql/mysql-server:5.7
     environment:
       MYSQL_ROOT_HOST: '%'
@@ -10,8 +8,13 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       TZ: 'Asia/Seoul'
     ports:
-      - "3305:3306"
+      - "3306:3306"
     command:
       - "mysqld"
       - "--character-set-server=utf8mb4"
       - "--collation-server=utf8mb4_unicode_ci"
+    volumes:
+      - data:/var/lib/mysql
+volumes:
+  data:
+

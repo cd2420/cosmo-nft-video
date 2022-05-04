@@ -7,4 +7,6 @@ public interface VideoService {
     public String helloWorld();
 
     public NftDto getNft(Long nftId);
+
+    void testHystrix();
 }
