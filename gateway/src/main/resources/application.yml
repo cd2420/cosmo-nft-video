@@ -14,19 +14,38 @@ spring:
           uri: lb://VIDEOSERVICE
           predicates: # 조건 부분
             - Path=/v1/api/video/**
-#          filters:
-#            - CustomFilter
         - id: nft-service
           uri: lb://NFTSERVICE
           predicates:
             - Path=/v1/api/nft/**
-#          filters:
-#            - name: CustomFilter
-#            - name: LoggingFilter
-#              args:
-#                baseMessage: Hi, there.
-#                preLogger: true
-#                postLogger: true
+        ### user-service ###
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/v1/api/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/users
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/v1/api/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/{segment}
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/v1/api/user-service/(?<segment>.*), /$\{segment}
+            #- AuthorizationHeaderFilter
+        #####################
+
   main:
     web-application-type: reactive
 server:
@@ -38,3 +57,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+token:
+  secret: user_token
