@@ -26,24 +26,24 @@ spring:
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/v1/api/user-service/(?<segment>.*), /$\{segment}
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/user-service/users
+            - Path=/user-service/**
             - Method=POST
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/v1/api/user-service/(?<segment>.*), /$\{segment}
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/user-service/{segment}
+            - Path=/user-service/**
             - Method=GET
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/v1/api/user-service/(?<segment>.*), /$\{segment}
-            #- AuthorizationHeaderFilter
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
         #####################
 
   main:
