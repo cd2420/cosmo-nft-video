@@ -13,14 +13,16 @@
 server:
   port: 8888
 spring:
+  application:
+    name: config-service
   cloud:
     config:
       server:
         git:
           uri: https://github.com/cd2420/cosmo-video-nft-config-svr
           username: cd2420
-          password: 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
-          searchPaths: videoservice, nftservice, specialroutesservice, zuulservice
+          password: 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
+          searchPaths: videoservice, nftservice, userservice
 
 #Setting logging levels
 logging:
