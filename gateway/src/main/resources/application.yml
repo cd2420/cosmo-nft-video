@@ -1,6 +1,11 @@
 spring:
   application:
     name: gateway-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
   cloud:
     gateway:
 #      default-filters:
@@ -45,7 +50,6 @@ spring:
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
         #####################
-
   main:
     web-application-type: reactive
 server:
@@ -58,5 +62,9 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-token:
-  secret: user_token
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace, busrefresh
+

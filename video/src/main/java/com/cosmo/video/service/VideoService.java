@@ -1,12 +1,14 @@
 package com.cosmo.video.service;
 
 import com.cosmo.video.dto.NftDto;
+import com.cosmo.video.dto.VideoDto;
+import com.cosmo.video.entity.Video;
 
 public interface VideoService {
 
-    public String helloWorld();
+    String helloWorld();
 
-    public NftDto getNft(Long nftId);
+    VideoDto createVideo(VideoDto videoDto);
 
-    void testHystrix();
+    Iterable<Video> getAllVideosByUserId(String userId);
 }

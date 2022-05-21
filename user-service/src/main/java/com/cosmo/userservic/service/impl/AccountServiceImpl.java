@@ -1,9 +1,12 @@
 package com.cosmo.userservic.service.impl;
 
+import com.cosmo.userservic.client.VideoServiceClient;
 import com.cosmo.userservic.dto.AccountDto;
 import com.cosmo.userservic.entity.Account;
 import com.cosmo.userservic.jpa.AccountRepository;
 import com.cosmo.userservic.service.AccountService;
+import com.cosmo.userservic.vo.ResponseAccount;
+import com.cosmo.userservic.vo.ResponseVideo;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -11,11 +14,11 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -24,6 +27,7 @@ public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final VideoServiceClient videoServiceClient;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
@@ -47,13 +51,17 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional(readOnly = true)
-    public AccountDto getAccountByAccountId(String accountId) {
+    public ResponseAccount getAccountByAccountId(String accountId) {
 
         Account account = accountRepository.findByAccountId(accountId)
                 .orElseThrow(() -> new UsernameNotFoundException(accountId));
-
         ModelMapper mapper = getModelMapper();
-        return mapper.map(account, AccountDto.class);
+        ResponseAccount responseAccount = mapper.map(account, ResponseAccount.class);
+
+        List<ResponseVideo> videos = videoServiceClient.getVideos(responseAccount.getAccountId());
+        responseAccount.setVideos(videos);
+
+        return responseAccount;
     }
 
     @Override

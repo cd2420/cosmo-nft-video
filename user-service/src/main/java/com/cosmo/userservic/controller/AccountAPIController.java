@@ -54,8 +54,7 @@ public class AccountAPIController {
 
     @GetMapping("/account/{accountId}")
     public ResponseEntity<ResponseAccount> getAccount(@PathVariable("accountId") String accountId) {
-        AccountDto accountDto = accountService.getAccountByAccountId(accountId);
-        ResponseAccount returnValue = new ModelMapper().map(accountDto, ResponseAccount.class);
-        return ResponseEntity.status(HttpStatus.OK).body(returnValue);
+        return ResponseEntity.status(HttpStatus.OK).body(accountService.getAccountByAccountId(accountId));
     }
+
 }
